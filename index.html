@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabriel A. Koranteng — Cambridge IGCSE & A Level Online Tuition</title>
+  <meta name="description" content="One-on-one online Cambridge tuition by Gabriel A. Koranteng. Specialising in IGCSE ICT (0417), IGCSE Computer Science (0478), AS & A Level IT (9626) and Computer Science (9618)." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Gabriel A. Koranteng — Cambridge Online Tuition" />
+  <meta property="og:description" content="Premium one-on-one online tuition for Cambridge IGCSE & A Level ICT and Computer Science. Book a session today." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon (GK monogram) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a1f3d'/%3E%3Ctext x='50%25' y='54%25' font-family='Georgia,serif' font-size='30' font-weight='700' fill='%23d4af37' text-anchor='middle' dominant-baseline='middle'%3EGK%3C/text%3E%3C/svg%3E" />
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy:   { 900: '#04141a', 800: '#072028', 700: '#0c2f3a' },
+            gold:   { 400: '#34d399', 500: '#10b981', 600: '#059669' },
+            ink:    '#04141a',
+          },
+          fontFamily: {
+            display: ['"Fraunces"', 'Georgia', 'serif'],
+            sans:    ['"Inter"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #070f24;
+      color: #e8ecf5;
+      overflow-x: hidden;
+    }
+
+    /* Aurora gradient background */
+    .aurora {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .aurora::before, .aurora::after {
+      content: '';
+      position: absolute;
+      width: 60vw; height: 60vw;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.35;
+    }
+    .aurora::before {
+      top: -10vw; left: -10vw;
+      background: radial-gradient(circle, #d4af37 0%, transparent 60%);
+    }
+    .aurora::after {
+      bottom: -15vw; right: -10vw;
+      background: radial-gradient(circle, #1e4a8a 0%, transparent 60%);
+    }
+
+    /* Subtle grid */
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(212,175,55,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,175,55,0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* Glass card */
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+      border: 1px solid rgba(212,175,55,0.18);
+      backdrop-filter: blur(8px);
+    }
+    .glass:hover {
+      border-color: rgba(212,175,55,0.45);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px -20px rgba(212,175,55,0.25);
+    }
+    .glass { transition: all 0.4s cubic-bezier(.2,.8,.2,1); }
+
+    /* Gold gradient text */
+    .gold-text {
+      background: linear-gradient(135deg, #f6e3a1 0%, #d4af37 50%, #b8932a 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Buttons */
+    .btn-gold {
+      background: linear-gradient(135deg, #e6c25c, #d4af37);
+      color: #0a1f3d;
+      box-shadow: 0 10px 30px -10px rgba(212,175,55,0.6);
+      transition: all 0.3s ease;
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px -12px rgba(212,175,55,0.75);
+    }
+    .btn-ghost {
+      border: 1.5px solid rgba(212,175,55,0.5);
+      color: #e6c25c;
+      transition: all 0.3s ease;
+    }
+    .btn-ghost:hover {
+      background: rgba(212,175,55,0.1);
+      border-color: #e6c25c;
+      transform: translateY(-2px);
+    }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.2,.8,.2,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Floating WhatsApp pulse */
+    @keyframes pulse-ring {
+      0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.55); }
+      70%  { box-shadow: 0 0 0 18px rgba(37,211,102,0); }
+      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+    .wa-float {
+      animation: pulse-ring 2.2s infinite;
+    }
+
+    /* Underline accent */
+    .accent-line {
+      width: 64px; height: 3px;
+      background: linear-gradient(90deg, #d4af37, transparent);
+      border-radius: 2px;
+    }
+
+    /* Best value ribbon */
+    .ribbon {
+      background: linear-gradient(135deg, #d4af37, #b8932a);
+      color: #0a1f3d;
+    }
+  </style>
+</head>
+<body class="font-sans">
+
+  <!-- ==================== NAV ==================== -->
+  <header class="fixed top-0 inset-x-0 z-40 backdrop-blur-md bg-navy-900/70 border-b border-gold-500/10">
+    <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2 group">
+        <span class="w-9 h-9 rounded-lg bg-navy-800 border border-gold-500/40 flex items-center justify-center font-display font-bold text-gold-500 group-hover:text-gold-400 transition">GK</span>
+        <span class="font-display text-lg tracking-wide">Gabriel A. Koranteng</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm text-slate-300">
+        <a href="#about" class="hover:text-gold-400 transition">About</a>
+        <a href="#subjects" class="hover:text-gold-400 transition">Subjects</a>
+        <a href="#pricing" class="hover:text-gold-400 transition">Pricing</a>
+        <a href="#why" class="hover:text-gold-400 transition">Why Me</a>
+        <a href="#contact" class="btn-gold px-4 py-2 rounded-lg font-semibold text-sm">Book Now</a>
+      </div>
+      <a href="#contact" class="md:hidden btn-gold px-4 py-2 rounded-lg font-semibold text-sm">Book</a>
+    </nav>
+  </header>
+
+  <!-- ==================== HERO ==================== -->
+  <section id="top" class="relative min-h-screen flex items-center pt-24 pb-16 px-6">
+    <div class="aurora"></div>
+    <div class="absolute inset-0 grid-bg opacity-40"></div>
+
+    <div class="relative max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
+      <div class="reveal">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gold-500/30 text-gold-400 text-xs uppercase tracking-widest mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold-500 animate-pulse"></span>
+          Cambridge Curriculum Specialist
+        </span>
+        <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-6">
+          One-on-one <br />
+          <span class="gold-text">Cambridge tuition,</span><br />
+          taught online.
+        </h1>
+        <p class="text-lg text-slate-300 max-w-lg mb-10 leading-relaxed">
+          Personalised IGCSE &amp; A Level coaching in <span class="text-gold-400 font-medium">ICT</span> and <span class="text-gold-400 font-medium">Computer Science</span> — designed around your pace, your syllabus, and your exam goals.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="tel:+233200108157" class="btn-gold px-7 py-4 rounded-xl font-semibold inline-flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.28-.28.67-.36 1.02-.25 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1A17 17 0 0 1 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Call Now
+          </a>
+          <a href="https://wa.me/233200108157?text=Hi%20Gabriel%2C%20I%27d%20like%20to%20book%20a%20one-on-one%20Cambridge%20tuition%20session." target="_blank" rel="noopener" class="btn-ghost px-7 py-4 rounded-xl font-semibold inline-flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l.6.952-1 3.648 3.737-.999.642.342z"/><path d="M9.536 6.92c-.198-.44-.405-.45-.595-.456l-.51-.01a.98.98 0 0 0-.71.333c-.245.266-.93.91-.93 2.214 0 1.305.95 2.564 1.083 2.74.132.176 1.84 2.948 4.55 4.018 2.252.89 2.71.713 3.2.668.487-.044 1.572-.643 1.793-1.262.221-.62.221-1.15.155-1.262-.066-.111-.244-.177-.51-.31-.265-.133-1.572-.776-1.815-.864-.243-.088-.422-.133-.6.133-.176.265-.687.864-.842 1.04-.155.177-.31.2-.576.067-.265-.133-1.12-.413-2.133-1.317-.788-.703-1.32-1.572-1.475-1.838-.155-.265-.017-.41.116-.541.12-.12.265-.31.398-.465a1.81 1.81 0 0 0 .265-.443c.088-.177.044-.332-.022-.465-.066-.133-.595-1.452-.815-1.984z"/></svg>
+            WhatsApp Me
+          </a>
+        </div>
+        <div class="mt-10 flex items-center gap-6 text-sm text-slate-400">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            Currently accepting students
+          </div>
+          <div>📞 0200108157</div>
+        </div>
+      </div>
+
+      <!-- Visual card -->
+      <div class="reveal hidden md:block">
+        <div class="relative">
+          <div class="absolute -inset-4 bg-gradient-to-br from-gold-500/20 to-transparent rounded-3xl blur-2xl"></div>
+          <div class="relative glass rounded-3xl p-8 space-y-6">
+            <div class="flex items-center justify-between">
+              <span class="text-xs uppercase tracking-widest text-gold-400">Cambridge International</span>
+              <span class="text-xs text-slate-400">Online · 1-on-1</span>
+            </div>
+            <div class="space-y-4">
+              <div class="flex items-center justify-between p-4 rounded-xl bg-navy-800/60 border border-white/5">
+                <div>
+                  <div class="font-display text-xl font-semibold">0417</div>
+                  <div class="text-xs text-slate-400">IGCSE ICT</div>
+                </div>
+                <span class="text-gold-400">→</span>
+              </div>
+              <div class="flex items-center justify-between p-4 rounded-xl bg-navy-800/60 border border-white/5">
+                <div>
+                  <div class="font-display text-xl font-semibold">0478</div>
+                  <div class="text-xs text-slate-400">IGCSE Computer Science</div>
+                </div>
+                <span class="text-gold-400">→</span>
+              </div>
+              <div class="flex items-center justify-between p-4 rounded-xl bg-navy-800/60 border border-white/5">
+                <div>
+                  <div class="font-display text-xl font-semibold">9626</div>
+                  <div class="text-xs text-slate-400">AS &amp; A Level IT</div>
+                </div>
+                <span class="text-gold-400">→</span>
+              </div>
+              <div class="flex items-center justify-between p-4 rounded-xl bg-navy-800/60 border border-white/5">
+                <div>
+                  <div class="font-display text-xl font-semibold">9618</div>
+                  <div class="text-xs text-slate-400">AS &amp; A Level Computer Science</div>
+                </div>
+                <span class="text-gold-400">→</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT ==================== -->
+  <section id="about" class="relative py-24 px-6">
+    <div class="max-w-4xl mx-auto reveal text-center">
+      <div class="accent-line mx-auto mb-6"></div>
+      <span class="text-xs uppercase tracking-[0.3em] text-gold-400">About</span>
+      <h2 class="font-display text-4xl md:text-5xl font-bold mt-4 mb-8">Meet your tutor</h2>
+      <p class="text-lg md:text-xl text-slate-300 leading-relaxed">
+        I'm <span class="text-white font-semibold">Gabriel A. Koranteng</span>, a Cambridge curriculum teacher with focused expertise in <span class="text-gold-400">ICT</span> and <span class="text-gold-400">Computer Science</span> at both IGCSE and Advanced level. My students get more than lessons — they get a structured, exam-ready strategy delivered one-on-one, online, on a schedule that works for them.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== SUBJECTS ==================== -->
+  <section id="subjects" class="relative py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <div class="accent-line mx-auto mb-6"></div>
+        <span class="text-xs uppercase tracking-[0.3em] text-gold-400">Subjects</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold mt-4">What I teach</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="glass rounded-2xl p-7 reveal">
+          <div class="text-gold-400 font-display text-3xl font-bold mb-2">0417</div>
+          <h3 class="font-display text-xl font-semibold mb-3">IGCSE ICT</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">Cambridge IGCSE Information and Communication Technology — practical and theoretical mastery of digital tools and applications.</p>
+        </div>
+        <div class="glass rounded-2xl p-7 reveal">
+          <div class="text-gold-400 font-display text-3xl font-bold mb-2">0478</div>
+          <h3 class="font-display text-xl font-semibold mb-3">IGCSE Computer Science</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">Cambridge IGCSE Computer Science — algorithms, programming, data representation, and computing principles.</p>
+        </div>
+        <div class="glass rounded-2xl p-7 reveal">
+          <div class="text-gold-400 font-display text-3xl font-bold mb-2">9626</div>
+          <h3 class="font-display text-xl font-semibold mb-3">AS &amp; A Level IT</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">Cambridge International AS &amp; A Level Information Technology — applied IT skills, data analysis, and digital systems.</p>
+        </div>
+        <div class="glass rounded-2xl p-7 reveal">
+          <div class="text-gold-400 font-display text-3xl font-bold mb-2">9618</div>
+          <h3 class="font-display text-xl font-semibold mb-3">AS &amp; A Level Computer Science</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">Cambridge International AS &amp; A Level Computer Science — advanced programming, theory of computation, and software design.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PRICING ==================== -->
+  <section id="pricing" class="relative py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <div class="accent-line mx-auto mb-6"></div>
+        <span class="text-xs uppercase tracking-[0.3em] text-gold-400">Pricing</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold mt-4">Simple, transparent rates</h2>
+        <p class="text-slate-400 mt-4 max-w-xl mx-auto">Choose monthly flexibility, or save more with the yearly plan.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- IGCSE Plan -->
+        <div class="glass rounded-3xl p-8 reveal relative">
+          <div class="flex items-center justify-between mb-6">
+            <span class="text-xs uppercase tracking-widest text-gold-400">IGCSE</span>
+            <span class="text-xs text-slate-400">0417 · 0478</span>
+          </div>
+          <h3 class="font-display text-2xl font-semibold mb-1">ICT &amp; Computer Science</h3>
+          <p class="text-sm text-slate-400 mb-8">For Cambridge IGCSE students.</p>
+
+          <div class="grid grid-cols-2 gap-4 mb-8">
+            <div class="p-5 rounded-xl bg-navy-800/60 border border-white/5">
+              <div class="text-xs text-slate-400 uppercase tracking-wider mb-2">Monthly</div>
+              <div class="font-display text-3xl font-bold">GH₵1,000</div>
+              <div class="text-xs text-slate-500 mt-1">/ month</div>
+            </div>
+            <div class="p-5 rounded-xl bg-gold-500/10 border border-gold-500/30 relative">
+              <span class="absolute -top-3 right-3 ribbon text-[10px] font-bold uppercase px-2 py-0.5 rounded">Save 2,000</span>
+              <div class="text-xs text-gold-400 uppercase tracking-wider mb-2">Yearly</div>
+              <div class="font-display text-3xl font-bold gold-text">GH₵10,000</div>
+              <div class="text-xs text-slate-400 mt-1">/ year</div>
+            </div>
+          </div>
+
+          <ul class="space-y-3 text-sm text-slate-300 mb-8">
+            <li class="flex gap-2"><span class="text-gold-400">✓</span> One-on-one online sessions</li>
+            <li class="flex gap-2"><span class="text-gold-400">✓</span> Full IGCSE syllabus coverage</li>
+            <li class="flex gap-2"><span class="text-gold-400">✓</span> Past-paper practice &amp; feedback</li>
+          </ul>
+
+          <a href="https://wa.me/233200108157?text=Hi%20Gabriel%2C%20I%27d%20like%20to%20book%20IGCSE%20tuition%20%280417%2F0478%29." target="_blank" rel="noopener" class="btn-gold w-full block text-center px-6 py-3 rounded-xl font-semibold">Book this plan</a>
+        </div>
+
+        <!-- A Level Plan -->
+        <div class="glass rounded-3xl p-8 reveal relative">
+          <div class="flex items-center justify-between mb-6">
+            <span class="text-xs uppercase tracking-widest text-gold-400">AS &amp; A Level</span>
+            <span class="text-xs text-slate-400">9626 · 9618</span>
+          </div>
+          <h3 class="font-display text-2xl font-semibold mb-1">IT &amp; Computer Science</h3>
+          <p class="text-sm text-slate-400 mb-8">For Cambridge AS &amp; A Level students.</p>
+
+          <div class="grid grid-cols-2 gap-4 mb-8">
+            <div class="p-5 rounded-xl bg-navy-800/60 border border-white/5">
+              <div class="text-xs text-slate-400 uppercase tracking-wider mb-2">Monthly</div>
+              <div class="font-display text-3xl font-bold">GH₵1,500</div>
+              <div class="text-xs text-slate-500 mt-1">/ month</div>
+            </div>
+            <div class="p-5 rounded-xl bg-gold-500/10 border border-gold-500/30 relative">
+              <span class="absolute -top-3 right-3 ribbon text-[10px] font-bold uppercase px-2 py-0.5 rounded">Save 3,000</span>
+              <div class="text-xs text-gold-400 uppercase tracking-wider mb-2">Yearly</div>
+              <div class="font-display text-3xl font-bold gold-text">GH₵15,000</div>
+              <div class="text-xs text-slate-400 mt-1">/ year</div>
+            </div>
+          </div>
+
+          <ul class="space-y-3 text-sm text-slate-300 mb-8">
+            <li class="flex gap-2"><span class="text-gold-400">✓</span> Advanced one-on-one coaching</li>
+            <li class="flex gap-2"><span class="text-gold-400">✓</span> Full AS &amp; A Level syllabus</li>
+            <li class="flex gap-2"><span class="text-gold-400">✓</span> Exam technique &amp; mark-scheme drills</li>
+          </ul>
+
+          <a href="https://wa.me/233200108157?text=Hi%20Gabriel%2C%20I%27d%20like%20to%20book%20AS%2FA%20Level%20tuition%20%289626%2F9618%29." target="_blank" rel="noopener" class="btn-gold w-full block text-center px-6 py-3 rounded-xl font-semibold">Book this plan</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WHY ME ==================== -->
+  <section id="why" class="relative py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <div class="accent-line mx-auto mb-6"></div>
+        <span class="text-xs uppercase tracking-[0.3em] text-gold-400">Why Me</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold mt-4">Built for results</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="glass rounded-2xl p-7 reveal">
+          <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-gold-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+          </div>
+          <h3 class="font-display text-lg font-semibold mb-2">One-on-one focus</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">Every session is yours alone — full attention, full pace control.</p>
+        </div>
+        <div class="glass rounded-2xl p-7 reveal">
+          <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-gold-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-display text-lg font-semibold mb-2">Exam-style practice</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">Drill against real Cambridge past papers with mark-scheme feedback.</p>
+        </div>
+        <div class="glass rounded-2xl p-7 reveal">
+          <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-gold-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-display text-lg font-semibold mb-2">Flexible scheduling</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">Sessions that fit your timezone, school timetable, and revision phase.</p>
+        </div>
+        <div class="glass rounded-2xl p-7 reveal">
+          <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-gold-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="font-display text-lg font-semibold mb-2">Results-driven</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">Clear weekly goals, tracked progress, and a strategy aimed at top grades.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT ==================== -->
+  <section id="contact" class="relative py-24 px-6">
+    <div class="max-w-4xl mx-auto reveal">
+      <div class="relative overflow-hidden rounded-3xl glass p-10 md:p-16 text-center">
+        <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-gold-500/10 blur-3xl"></div>
+        <div class="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-blue-500/10 blur-3xl"></div>
+
+        <div class="relative">
+          <span class="text-xs uppercase tracking-[0.3em] text-gold-400">Book a session</span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold mt-4 mb-6">Ready to start?</h2>
+          <p class="text-lg text-slate-300 max-w-xl mx-auto mb-10">
+            Call or message me directly to book your first one-on-one online lesson.
+          </p>
+
+          <div class="flex flex-wrap justify-center gap-4 mb-8">
+            <a href="tel:+233200108157" class="btn-gold px-7 py-4 rounded-xl font-semibold inline-flex items-center gap-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.28-.28.67-.36 1.02-.25 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1A17 17 0 0 1 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              Call 0200108157
+            </a>
+            <a href="https://wa.me/233200108157?text=Hi%20Gabriel%2C%20I%27d%20like%20to%20book%20a%20one-on-one%20Cambridge%20tuition%20session." target="_blank" rel="noopener" class="btn-ghost px-7 py-4 rounded-xl font-semibold inline-flex items-center gap-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l.6.952-1 3.648 3.737-.999.642.342z"/><path d="M9.536 6.92c-.198-.44-.405-.45-.595-.456l-.51-.01a.98.98 0 0 0-.71.333c-.245.266-.93.91-.93 2.214 0 1.305.95 2.564 1.083 2.74.132.176 1.84 2.948 4.55 4.018 2.252.89 2.71.713 3.2.668.487-.044 1.572-.643 1.793-1.262.221-.62.221-1.15.155-1.262-.066-.111-.244-.177-.51-.31-.265-.133-1.572-.776-1.815-.864-.243-.088-.422-.133-.6.133-.176.265-.687.864-.842 1.04-.155.177-.31.2-.576.067-.265-.133-1.12-.413-2.133-1.317-.788-.703-1.32-1.572-1.475-1.838-.155-.265-.017-.41.116-.541.12-.12.265-.31.398-.465a1.81 1.81 0 0 0 .265-.443c.088-.177.044-.332-.022-.465-.066-.133-.595-1.452-.815-1.984z"/></svg>
+              WhatsApp Me
+            </a>
+          </div>
+
+          <div class="text-sm text-slate-400">
+            Direct line: <span class="text-white font-semibold tracking-wider">0200108157</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="relative py-10 px-6 border-t border-white/5">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-400">
+      <div class="flex items-center gap-2">
+        <span class="w-7 h-7 rounded-md bg-navy-800 border border-gold-500/40 flex items-center justify-center font-display font-bold text-gold-500 text-xs">GK</span>
+        <span>© <span id="year"></span> Gabriel A. Koranteng — Cambridge Online Tuition</span>
+      </div>
+      <div>0200108157 · Online · Worldwide</div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp button -->
+  <a href="https://wa.me/233200108157?text=Hi%20Gabriel%2C%20I%27d%20like%20to%20book%20a%20one-on-one%20Cambridge%20tuition%20session." target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="wa-float fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center shadow-2xl hover:scale-110 transition">
+    <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l.6.952-1 3.648 3.737-.999.642.342z"/><path d="M9.536 6.92c-.198-.44-.405-.45-.595-.456l-.51-.01a.98.98 0 0 0-.71.333c-.245.266-.93.91-.93 2.214 0 1.305.95 2.564 1.083 2.74.132.176 1.84 2.948 4.55 4.018 2.252.89 2.71.713 3.2.668.487-.044 1.572-.643 1.793-1.262.221-.62.221-1.15.155-1.262-.066-.111-.244-.177-.51-.31-.265-.133-1.572-.776-1.815-.864-.243-.088-.422-.133-.6.133-.176.265-.687.864-.842 1.04-.155.177-.31.2-.576.067-.265-.133-1.12-.413-2.133-1.317-.788-.703-1.32-1.572-1.475-1.838-.155-.265-.017-.41.116-.541.12-.12.265-.31.398-.465a1.81 1.81 0 0 0 .265-.443c.088-.177.044-.332-.022-.465-.066-.133-.595-1.452-.815-1.984z"/></svg>
+  </a>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Reveal-on-scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>
